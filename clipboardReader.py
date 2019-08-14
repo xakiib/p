@@ -17,7 +17,11 @@ def getClipboardData():
     print(data)
     return data
 
-
+def setClipboardData(data):
+    p = subprocess.Popen(['xclip','-selection','clipboard'], stdin=subprocess.PIPE)
+    p.stdin.write(data)
+    p.stdin.close()
+    retcode = p.wait()
 # while True:
 #     get_clipboard()
 
